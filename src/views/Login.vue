@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="col-8">
+
+
       <!-- Card Login -->
-      <div class="card">
+      <div class="card" style="margin-top: 50px;">
         <div class="card-header">
           Contacta con Personas extraordinarias
         </div>
@@ -53,7 +55,8 @@
             </div>
             <div style="width: 25%; box-sizing: content-box;">
               <div class="pl-2">
-                <button class="btn btn-outline-primary btn-block">Unirme</button>
+                <button class="btn btn-outline-primary btn-block"
+                        data-toggle="modal" data-target="#exampleModal">Unirme</button>
               </div>
             </div>
           </div>
@@ -117,12 +120,52 @@
 
         </div><!-- end card-body -->
       </div><!-- end card -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Como quieres unirte?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="d-inline-flex pt-1" style="width: 100%">
+                <!-- Button Trueque -->
+                <div style="width: 50%; box-sizing: content-box;">
+                  <div class="pr-1">
+                    <button class="btn btn-primary btn-block btn-lg" @click="UnirteOpction('trueque')">
+                      <i class="fa fa-user"></i> Trueque
+                    </button>
+                  </div>
+                </div>
+                <!-- Button Ambassador-->
+                <div style="width: 50%; box-sizing: content-box;">
+                  <div class="pl-1">
+                    <button class="btn btn-warning btn-block btn-lg">
+                      <i class="fa fa-users"></i> Ambassador
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End ModalBody -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- End Modal -->
+
     </div><!-- end col-10 -->
   </div>
 </template>
 
 <script>
   const axios = require('axios');
+  import $ from 'jquery'
   export default {
     data() {
       return {
@@ -144,6 +187,15 @@
             }
             console.log(res.data.logged_in)
           });
+      },
+      UnirteOpction: function (option) {
+        if (option == 'trueque'){
+          /* Cierra el Modal Unirte */
+          $('#exampleModal').modal('hide');
+          this.$router.push('trueque_new');
+        }else if (option == 'ambassador'){
+          this.$router.push('');
+        }
       }
     },
     mounted() {

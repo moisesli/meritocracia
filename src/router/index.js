@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard'
-
+import TruequeNew from '../views/trueque/TruequeNew'
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,6 +21,11 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/trueque_new',
+    name: 'TruequeNew',
+    component: TruequeNew
   },
   {
     path: '/about',
