@@ -145,7 +145,7 @@
                 <!-- Button Ambassador-->
                 <div style="width: 50%; box-sizing: content-box;">
                   <div class="pl-1">
-                    <button class="btn btn-warning btn-block btn-lg">
+                    <button class="btn btn-warning btn-block btn-lg" @click="UnirteOpction('ambassador')">
                       <i class="fa fa-users"></i> Ambassador
                     </button>
                   </div>

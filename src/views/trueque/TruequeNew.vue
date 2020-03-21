@@ -2,7 +2,7 @@
   <div>
 
     <!-- Titulo Registro Usuario Normal -->
-    <h1 class="display-4 pt-4">Pasos Para Registrarte Trueque</h1>
+    <h1 class="display-4 pt-4">Trueque Registro</h1>
 
     <!-- Wizard Form-->
 <!--    <div class="list-group list-group-horizontal-lg pt-4">-->
@@ -86,9 +86,11 @@
               </div>
             </div>
 
-
-
-            <a href="#" class="btn btn-primary btn-lg mt-4"><i class="fa fa-share-alt"></i> Recomendar</a>
+            <button class="btn btn-primary mt-4" @click="NextStep" :disabled="disabled_in">
+              <i v-if="disabled_in==false" class="fa fa-share-alt"></i>
+              <span v-if="disabled_in==true" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Recomendar
+            </button>
           </div>
         </div>
       </div>
@@ -105,6 +107,7 @@
     },
     data() {
       return {
+        disabled_in: false,
         value: [
           { name: 'Javascript', code: 'js' }
         ],
@@ -126,6 +129,10 @@
         }
         this.options.push(tag)
         this.value.push(tag)
+      },
+      NextStep(){
+        this.disabled_in = true;
+        setTimeout(() => { this.$router.push('trueque_register') }, 1500);
       }
     }
   }

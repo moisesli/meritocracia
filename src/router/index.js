@@ -4,6 +4,14 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard'
 import TruequeNew from '../views/trueque/TruequeNew'
+import TruequeRegister from '../views/trueque/TruequeRegister'
+
+// Ambasador
+import AmbasadorUno from '../views/ambassador/AmbassadorUno'
+import AmbasadorDos from '../views/ambassador/AmbassadorDos'
+import AmbasadorTres from '../views/ambassador/AmbassadorTres'
+import AmbasadorCuatro from '../views/ambassador/AmbassadorCuatro'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,6 +34,31 @@ const routes = [
     path: '/trueque_new',
     name: 'TruequeNew',
     component: TruequeNew
+  },
+  {
+    path: '/trueque_register',
+    name: 'TruequeRegister',
+    component: TruequeRegister
+  },
+  {
+    path: '/ambassador_uno',
+    name: 'AmbassadorUno',
+    component: AmbasadorUno
+  },
+  {
+    path: '/ambassador_dos',
+    name: 'AmbassadorDos',
+    component: AmbasadorDos
+  },
+  {
+    path: '/ambassador_tres',
+    name: 'AmbassadorTres',
+    component: AmbasadorTres
+  },
+  {
+    path: '/ambassador_cuatro',
+    name: 'AmbassadorCuatro',
+    component: AmbasadorCuatro
   },
   {
     path: '/about',
