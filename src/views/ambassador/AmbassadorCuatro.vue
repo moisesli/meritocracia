@@ -57,13 +57,14 @@
 
             <button class="btn btn-primary btn-lg mt-4" @click="NextStep" :disabled="disabled_in">
               <i v-if="disabled_in==false" class="fa fa-share"></i>
+              <i v-if="disabled_in == 'ok'" class="fa fa-check"></i>
               <span v-if="disabled_in==true" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
               Recomendar
             </button>
 
 
 
-            <div class="alert alert-primary mt-3" role="alert">
+            <div class="alert alert-primary mt-3" role="alert" v-if="disabled_in=='ok'">
               Muchas Gracias Recuerda que tienes que entar seguro que esa persona te
               conoce, que se una a la red y que permanezca con ella hasta el momento que
               hagamos los conteos de tus puntos.
@@ -72,7 +73,7 @@
                 <i class="fa fa-check-circle"></i> Seguir Recomendando</button>
 
               <button class="btn btn-success btn-lg mt-4 ml-3">
-                <i class="fa fa-check-circle"></i> Ingresar</button>
+                <i class="fa fa-check-circle"></i> Ingresar a tu Cuenta</button>
             </div>
 
           </div>
@@ -116,7 +117,10 @@
       },
       NextStep(){
         this.disabled_in = true;
-        setTimeout(() => { this.$router.push('trueque_register') }, 1500);
+        setTimeout(() => {
+          this.disabled_in = 'ok';
+          // this.$router.push('trueque_register')
+        }, 1500);
       }
     }
   }
