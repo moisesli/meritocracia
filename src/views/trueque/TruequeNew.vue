@@ -2,42 +2,43 @@
   <div>
 
     <!-- Titulo Registro Usuario Normal -->
-    <h1 class="display-4 pt-4"><i class="fa fa-user-plus"></i> Pasos Para Registrarte Trueque</h1>
+    <h1 class="display-4 pt-4">Pasos Para Registrarte Trueque</h1>
 
     <!-- Wizard Form-->
-    <div class="list-group list-group-horizontal-lg pt-4">
+<!--    <div class="list-group list-group-horizontal-lg pt-4">-->
 
-      <div class="list-group-item list-group-item-action list-group-item-primary">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">1. <i class="fa fa-share-alt"></i> Recomienda Alguien</h5>
-          <small>Siguiente <i class="fa fa-arrow-alt-circle-right"></i></small>
-        </div>
-        <p class="mb-1">Recomienda a alguien o a ti mismo para poder Continuar con el siguinte.</p>
-        <small>Paso 1</small>
-      </div>
+<!--      <div class="list-group-item list-group-item-action list-group-item-primary">-->
+<!--        <div class="d-flex w-100 justify-content-between">-->
+<!--          <h5 class="mb-1">1. <i class="fa fa-share-alt"></i> Recomienda Alguien</h5>-->
+<!--          <small>Siguiente <i class="fa fa-arrow-alt-circle-right"></i></small>-->
+<!--        </div>-->
+<!--        <p class="mb-1">Recomienda a alguien o a ti mismo para poder Continuar con el siguinte.</p>-->
+<!--        <small>Paso 1</small>-->
+<!--      </div>-->
 
-      <div class="list-group-item list-group-item-action list-group-item-light">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">2. <i class="fa fa-user-cog"></i> Registro de usuario.</h5>
-          <small>Siguiente <i class="fa fa-arrow-alt-circle-right"></i></small>
-        </div>
-        <p class="mb-1">Completa Tus datos, nombre , apellido, contrasenia y asegurate que sean correctos.</p>
-        <small>Paso 2</small>
-      </div>
+<!--      <div class="list-group-item list-group-item-action list-group-item-light">-->
+<!--        <div class="d-flex w-100 justify-content-between">-->
+<!--          <h5 class="mb-1">2. <i class="fa fa-user-cog"></i> Registro de usuario.</h5>-->
+<!--          <small>Siguiente <i class="fa fa-arrow-alt-circle-right"></i></small>-->
+<!--        </div>-->
+<!--        <p class="mb-1">Completa Tus datos, nombre , apellido, contrasenia y asegurate que sean correctos.</p>-->
+<!--        <small>Paso 2</small>-->
+<!--      </div>-->
 
-      <div class="list-group-item list-group-item-action list-group-item-light">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">3. Completado.</h5>
-          <small class="text-muted">Completado <i class="fa fa-arrow-alt-circle-down"></i></small>
-        </div>
-        <p class="mb-1">Has completado todo el registro de Usuario Regular exitosamente. Bievenido .!!</p>
-        <small class="text-muted">Paso 3</small>
-      </div>
+<!--      <div class="list-group-item list-group-item-action list-group-item-light">-->
+<!--        <div class="d-flex w-100 justify-content-between">-->
+<!--          <h5 class="mb-1">3. Completado.</h5>-->
+<!--          <small class="text-muted">Completado <i class="fa fa-arrow-alt-circle-down"></i></small>-->
+<!--        </div>-->
+<!--        <p class="mb-1">Has completado todo el registro de Usuario Regular exitosamente. Bievenido .!!</p>-->
+<!--        <small class="text-muted">Paso 3</small>-->
+<!--      </div>-->
 
-    </div><!-- End Wizard Form-->
+<!--    </div>-->
+    <!-- End Wizard Form-->
 
     <!-- Formulario Recomienda -->
-    <div class="row pt-4 d-flex justify-content-center">
+    <div class="row pt-4 pb-4 d-flex justify-content-center">
       <div class="col-9">
         <div class="card">
           <div class="card-body">
@@ -72,13 +73,22 @@
             </div>
 
             <div class="form-row pt-4">
+              <div class="col">
+                <label>Area de Expertis</label>
+                <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="code" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
+              </div>
+            </div>
+
+            <div class="form-row pt-4">
               <div class="col-8">
                 <label>Link de Red Social del Referido:</label>
                 <input type="text" class="form-control form-control-lg" placeholder="https://www.facebook.com/AbrahamMoisesLinares">
               </div>
             </div>
 
-            <a href="#" class="btn btn-primary mt-4">Enviar</a>
+
+
+            <a href="#" class="btn btn-primary btn-lg mt-4"><i class="fa fa-share-alt"></i> Recomendar</a>
           </div>
         </div>
       </div>
@@ -86,3 +96,39 @@
 
   </div>
 </template>
+
+<script>
+  import Multiselect from 'vue-multiselect'
+  export default {
+    components: {
+      Multiselect
+    },
+    data() {
+      return {
+        value: [
+          { name: 'Javascript', code: 'js' }
+        ],
+        options: [
+          { name: 'Vue.js', code: 'vu' },
+          { name: 'FrontEnd', code: 'fron' },
+          { name: 'BacnkEnd', code: 'back' },
+          { name: 'FullStack', code: 'full' },
+          { name: 'Javascript', code: 'js' },
+          { name: 'Open Source', code: 'os' }
+        ]
+      };
+    },
+    methods: {
+      addTag (newTag) {
+        const tag = {
+          name: newTag,
+          code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+        }
+        this.options.push(tag)
+        this.value.push(tag)
+      }
+    }
+  }
+</script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
