@@ -194,7 +194,8 @@
           $('#exampleModal').modal('hide');
           this.$router.push('trueque_new');
         }else if (option == 'ambassador'){
-          this.$router.push('');
+          $('#exampleModal').modal('hide');
+          this.$router.push('ambassador_uno');
         }
       },
       GoToPage(option) {
