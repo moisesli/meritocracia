@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard'
+
+// Trueque
 import TruequeNew from '../views/trueque/TruequeNew'
 import TruequeRegister from '../views/trueque/TruequeRegister'
 
@@ -11,6 +13,9 @@ import AmbasadorUno from '../views/ambassador/AmbassadorUno'
 import AmbasadorDos from '../views/ambassador/AmbassadorDos'
 import AmbasadorTres from '../views/ambassador/AmbassadorTres'
 import AmbasadorCuatro from '../views/ambassador/AmbassadorCuatro'
+
+// Anonymous
+import AnonymousRegister from '../views/anonymous/AnonymousRegister'
 
 Vue.use(VueRouter)
 
@@ -59,6 +64,11 @@ const routes = [
     path: '/ambassador_cuatro',
     name: 'AmbassadorCuatro',
     component: AmbasadorCuatro
+  },
+  {
+    path: '/anonymous_register',
+    name:'AnonymousRegister',
+    component: AnonymousRegister
   },
   {
     path: '/about',

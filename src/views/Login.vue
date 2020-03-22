@@ -103,7 +103,7 @@
             <div style="width: 30%" class="text-sm-right"></div>
             <div style="width: 50%; box-sizing: content-box;">
               <div class="pl-2">
-                <button class="btn btn-outline-danger btn-block">Ingresar Anonimamente</button>
+                <button class="btn btn-outline-danger btn-block" @click="GoToPage('anonymous')">Ingresar Anonimamente</button>
               </div>
             </div>
           </div>
@@ -195,6 +195,16 @@
           this.$router.push('trueque_new');
         }else if (option == 'ambassador'){
           this.$router.push('');
+        }
+      },
+      GoToPage(option) {
+        switch (option) {
+          case "anonymous":
+            this.$router.push('anonymous_register');
+            break;
+        
+          default:
+            break;
         }
       }
     },
